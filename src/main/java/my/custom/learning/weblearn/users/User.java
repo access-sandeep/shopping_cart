@@ -13,58 +13,80 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import my.custom.learning.weblearn.post.Post;
 
-@Entity(name = "user_details")
+@Entity(name = "users")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", initialValue = 10000, allocationSize = 1)
-	private Long id;
+	private Long user_id;
 
-	@OneToMany(mappedBy = "user")
-	@JsonIgnore
-	private List<Post> posts;
-
-	@Pattern(regexp = "^[A-Z]{1}[a-z]+\s{1}[A-Za-z]*\s{0,1}[A-Za-z]*$", message = "The name should only contain alphabets. The first alphabet of the name must be a capital letter. Name can not have more than three parts, first, middle and last. All the parts must be seperated by a single space. ")
-	private String name;
+	@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The first name should only contain alphabets. The first alphabet of the first name must be a capital letter.")
+	private String first_name;
+	
+	@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The last name should only contain alphabets. The first alphabet of the last name must be a capital letter.")
+	private String last_name;
 
 	@Email(message = "The email format is not correct. ")
 	private String email;
 
-	@JsonIgnore
-	private String password;
+//	@JsonIgnore
+//	@NotNull(message = "The password cannot be null.")
+//	private String password_hash;
 
-	private LocalDateTime registrationDateTime;
+	@NotNull(message = "The phone number cannot be null.")
+	private String phone;
 
-	public User() {
+	private Integer address_id;
+	
+	private boolean is_active;
+
+	private LocalDateTime created_at;
+
+	public User(Long user_id,
+			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The first name should only contain alphabets. The first alphabet of the first name must be a capital letter.") String first_name,
+			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The last name should only contain alphabets. The first alphabet of the last name must be a capital letter.") String last_name,
+			@Email(message = "The email format is not correct. ") String email,
+			@NotNull(message = "The phone number cannot be null.") String phone, Integer address_id, boolean is_active,
+			LocalDateTime created_at) {
 		super();
-	}
-
-	public User(Long id, String name, String email, Optional<Boolean> isAdmin, LocalDateTime registrationDateTime) {
-		super();
-		this.id = id;
-		this.name = name;
+		this.user_id = user_id;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.email = email;
-		this.registrationDateTime = registrationDateTime;
+//		this.password_hash = password_hash;
+		this.phone = phone;
+		this.address_id = address_id;
+		this.is_active = is_active;
+		this.created_at = created_at==null ? LocalDateTime.now() : created_at;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUser_id() {
+		return user_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
 	public String getEmail() {
@@ -75,34 +97,50 @@ public class User {
 		this.email = email;
 	}
 
-	public LocalDateTime getRegistrationDateTime() {
-		return registrationDateTime;
+//	public String getPassword_hash() {
+//		return password_hash;
+//	}
+
+//	public void setPassword_hash(String password_hash) {
+//		this.password_hash = password_hash;
+//	}
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setRegistrationDateTime(LocalDateTime registrationDateTime) {
-		this.registrationDateTime = registrationDateTime;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
+	public Integer getAddress_id() {
+		return address_id;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
+	public void setAddress_id(Integer address_id) {
+		this.address_id = address_id;
 	}
 
-	public String getPassword() {
-		return password;
+	public boolean isIs_active() {
+		return is_active;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
+
+	public LocalDateTime getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(LocalDateTime created_at) {
+		this.created_at = created_at==null ? LocalDateTime.now() : created_at;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", registrationDateTime="
-				+ registrationDateTime + "]";
+		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
+				+ email + ", phone=" + phone + ", address_id=" + address_id
+				+ ", is_active=" + is_active + ", created_at=" + created_at + "]";
 	}
-
 }

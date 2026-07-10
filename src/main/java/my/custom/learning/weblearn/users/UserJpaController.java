@@ -47,52 +47,54 @@ public class UserJpaController {
 	
 	@PostMapping(path = "/user/add", version=AppConstants.API_VERSION)
 	public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
+		System.out.println("User to be added: "+user);
 		LocalDateTime localDateTime = LocalDateTime.now();
-		user.setRegistrationDateTime(localDateTime);
+//		user.setRegistrationDateTime(localDateTime);
+		user.setCreated_at(localDateTime);
 		User createUser = repository.save(user);
-		URI location = URI.create("/user/"+createUser.getId());
+		URI location = URI.create("/user/"+createUser.getUser_id());
 		return ResponseEntity.created(location).build();
 	}
 	
-	@DeleteMapping(path = "/user/delete/{id}", version=AppConstants.API_VERSION)
-	public ResponseEntity<List<User>> deleteUser(@PathVariable int id) {
-		repository.deleteById(id);
-		return ResponseEntity.ok(findAll());
-	}
-	
-	@PatchMapping(path = "/user/update/name/{id}", version=AppConstants.API_VERSION)
-	public ResponseEntity<User> patchUserName(@PathVariable int id, @Valid @RequestBody User user) {
-		Optional<User> existingUser = findById(id);
-		user.setId(existingUser.get().getId());
-		user.setEmail(existingUser.get().getEmail());
-		user.setRegistrationDateTime(existingUser.get().getRegistrationDateTime());
-		
-		if(user.getName()==null) {
-			user.setName(existingUser.get().getName());
-		}
-		
-		return ResponseEntity.ok(repository.save(user));
-	}
-	
-	@PatchMapping(path = "/user/update/{id}", version=AppConstants.API_VERSION)
-	public ResponseEntity<User> patchUser(@PathVariable int id, @Valid @RequestBody User user) {
-		Optional<User> existingUser = findById(id);
-		user.setId(existingUser.get().getId());
-
-		if(user.getEmail()==null) {
-			user.setEmail(existingUser.get().getEmail());
-		}
-		if(user.getName()==null) {
-			user.setName(existingUser.get().getName());
-		}
-		user.setRegistrationDateTime(existingUser.get().getRegistrationDateTime());
-		
-		return ResponseEntity.ok(repository.save(user));
-	}
-	
-	@GetMapping(path = "/user/{id}/posts", version = AppConstants.API_VERSION)
-	public List<Post> findAllByUser(@PathVariable int id) {
-		User user = findById(id).orElseThrow();
-		return user.getPosts();
-	}
+//	@DeleteMapping(path = "/user/delete/{id}", version=AppConstants.API_VERSION)
+//	public ResponseEntity<List<User>> deleteUser(@PathVariable int id) {
+//		repository.deleteById(id);
+//		return ResponseEntity.ok(findAll());
+//	}
+//	
+//	@PatchMapping(path = "/user/update/name/{id}", version=AppConstants.API_VERSION)
+//	public ResponseEntity<User> patchUserName(@PathVariable int id, @Valid @RequestBody User user) {
+//		Optional<User> existingUser = findById(id);
+//		user.setId(existingUser.get().getId());
+//		user.setEmail(existingUser.get().getEmail());
+//		user.setRegistrationDateTime(existingUser.get().getRegistrationDateTime());
+//		
+//		if(user.getName()==null) {
+//			user.setName(existingUser.get().getName());
+//		}
+//		
+//		return ResponseEntity.ok(repository.save(user));
+//	}
+//	
+//	@PatchMapping(path = "/user/update/{id}", version=AppConstants.API_VERSION)
+//	public ResponseEntity<User> patchUser(@PathVariable int id, @Valid @RequestBody User user) {
+//		Optional<User> existingUser = findById(id);
+//		user.setId(existingUser.get().getId());
+//
+//		if(user.getEmail()==null) {
+//			user.setEmail(existingUser.get().getEmail());
+//		}
+//		if(user.getName()==null) {
+//			user.setName(existingUser.get().getName());
+//		}
+//		user.setRegistrationDateTime(existingUser.get().getRegistrationDateTime());
+//		
+//		return ResponseEntity.ok(repository.save(user));
+//	}
+//	
+//	@GetMapping(path = "/user/{id}/posts", version = AppConstants.API_VERSION)
+//	public List<Post> findAllByUser(@PathVariable int id) {
+//		User user = findById(id).orElseThrow();
+//		return user.getPosts();
+//	}
 }

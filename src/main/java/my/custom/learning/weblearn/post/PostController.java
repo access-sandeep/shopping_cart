@@ -62,7 +62,7 @@ public class PostController {
 	public void createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
 		User user = userRepo.findById(id).orElseThrow();
 
-		System.out.println(userService.findAll());
+//		System.out.println(userService.findAll());
 		System.out.println(user);
 
 		
