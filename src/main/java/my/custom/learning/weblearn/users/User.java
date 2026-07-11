@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +35,7 @@ public class User {
 	@Email(message = "The email format is not correct. ")
 	private String email;
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String secret_key;
 
 	@NotNull(message = "The phone number cannot be null.")
