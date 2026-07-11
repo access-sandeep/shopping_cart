@@ -45,6 +45,11 @@ public class User {
 
 	private LocalDateTime created_at;
 
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public User(Long user_id,
 			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The first name should only contain alphabets. The first alphabet of the first name must be a capital letter.") String first_name,
 			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The last name should only contain alphabets. The first alphabet of the last name must be a capital letter.") String last_name,
