@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,9 +35,8 @@ public class User {
 	@Email(message = "The email format is not correct. ")
 	private String email;
 
-//	@JsonIgnore
-//	@NotNull(message = "The password cannot be null.")
-//	private String password_hash;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private String secret_key;
 
 	@NotNull(message = "The phone number cannot be null.")
 	private String phone;
@@ -47,10 +47,15 @@ public class User {
 
 	private LocalDateTime created_at;
 
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public User(Long user_id,
 			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The first name should only contain alphabets. The first alphabet of the first name must be a capital letter.") String first_name,
 			@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The last name should only contain alphabets. The first alphabet of the last name must be a capital letter.") String last_name,
-			@Email(message = "The email format is not correct. ") String email,
+			@Email(message = "The email format is not correct. ") String email, String secret_key,
 			@NotNull(message = "The phone number cannot be null.") String phone, Integer address_id, boolean is_active,
 			LocalDateTime created_at) {
 		super();
@@ -58,11 +63,11 @@ public class User {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
-//		this.password_hash = password_hash;
+		this.secret_key = secret_key;
 		this.phone = phone;
 		this.address_id = address_id;
 		this.is_active = is_active;
-		this.created_at = created_at==null ? LocalDateTime.now() : created_at;
+		this.created_at = created_at;
 	}
 
 	public Long getUser_id() {
@@ -97,14 +102,6 @@ public class User {
 		this.email = email;
 	}
 
-//	public String getPassword_hash() {
-//		return password_hash;
-//	}
-
-//	public void setPassword_hash(String password_hash) {
-//		this.password_hash = password_hash;
-//	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -137,10 +134,18 @@ public class User {
 		this.created_at = created_at==null ? LocalDateTime.now() : created_at;
 	}
 
+	public String getSecret_key() {
+		return secret_key;
+	}
+
+	public void setSecret_key(String secret_key) {
+		this.secret_key = secret_key;
+	}
+
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
-				+ email + ", phone=" + phone + ", address_id=" + address_id
+				+ email + ", secret_key=" + secret_key + ", phone=" + phone + ", address_id=" + address_id
 				+ ", is_active=" + is_active + ", created_at=" + created_at + "]";
 	}
 }

@@ -47,9 +47,7 @@ public class UserJpaController {
 	
 	@PostMapping(path = "/user/add", version=AppConstants.API_VERSION)
 	public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-		System.out.println("User to be added: "+user);
 		LocalDateTime localDateTime = LocalDateTime.now();
-//		user.setRegistrationDateTime(localDateTime);
 		user.setCreated_at(localDateTime);
 		User createUser = repository.save(user);
 		URI location = URI.create("/user/"+createUser.getUser_id());
