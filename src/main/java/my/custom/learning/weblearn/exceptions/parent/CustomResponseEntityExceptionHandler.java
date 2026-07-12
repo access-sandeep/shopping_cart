@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.exceptions;
+package my.custom.learning.weblearn.exceptions.parent;
 
 import java.time.LocalDateTime;
 
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import my.custom.learning.weblearn.post.PostNotDeletedException;
-import my.custom.learning.weblearn.post.PostNotFoundException;
-import my.custom.learning.weblearn.users.UserNotDeletedException;
-import my.custom.learning.weblearn.users.UserNotFoundException;
+import my.custom.learning.weblearn.exceptions.PostNotDeletedException;
+import my.custom.learning.weblearn.exceptions.PostNotFoundException;
+import my.custom.learning.weblearn.exceptions.UserNotDeletedException;
+import my.custom.learning.weblearn.exceptions.UserNotFoundException;
 
 @ControllerAdvice
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {

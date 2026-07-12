@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.users;
+package my.custom.learning.weblearn.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +16,6 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import my.custom.learning.weblearn.post.Post;
 
 @Entity(name = "users")
 public class User {

@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.exceptions;
+package my.custom.learning.weblearn.exceptions.parent;
 
 import java.time.LocalDateTime;
 

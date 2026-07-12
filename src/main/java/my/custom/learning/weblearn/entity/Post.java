@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.post;
+package my.custom.learning.weblearn.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
-import my.custom.learning.weblearn.users.User;
 
 @Entity
 public class Post {

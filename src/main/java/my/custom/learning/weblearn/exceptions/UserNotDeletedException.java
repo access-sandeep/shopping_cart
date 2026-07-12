@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.users;
+package my.custom.learning.weblearn.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

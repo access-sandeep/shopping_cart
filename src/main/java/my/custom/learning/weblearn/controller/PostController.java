@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.post;
+package my.custom.learning.weblearn.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import my.custom.learning.weblearn.AppConstants;
-import my.custom.learning.weblearn.jpa.PostRepository;
-import my.custom.learning.weblearn.jpa.UserRepository;
-import my.custom.learning.weblearn.users.User;
-import my.custom.learning.weblearn.users.UserNotFoundException;
-import my.custom.learning.weblearn.users.UserService;
+import my.custom.learning.weblearn.entity.Post;
+import my.custom.learning.weblearn.entity.User;
+import my.custom.learning.weblearn.exceptions.PostNotFoundException;
+import my.custom.learning.weblearn.exceptions.UserNotFoundException;
+import my.custom.learning.weblearn.repository.PostRepository;
+import my.custom.learning.weblearn.repository.UserRepository;
+import my.custom.learning.weblearn.service.PostService;
+import my.custom.learning.weblearn.service.UserService;
 
 @RestController
 public class PostController {

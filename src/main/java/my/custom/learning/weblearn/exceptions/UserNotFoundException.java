@@ -1,16 +1,16 @@
-package my.custom.learning.weblearn.post;
+package my.custom.learning.weblearn.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class PostNotFoundException extends RuntimeException {
+public class UserNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	private String message;
 	private String trace;
 
-	public PostNotFoundException(String message, String trace) {
+	public UserNotFoundException(String message, String trace) {
 		super();
 		this.message = message;
 		this.trace = trace;
@@ -39,7 +39,7 @@ public class PostNotFoundException extends RuntimeException {
 
 	@Override
 	public String toString() {
-		return "PostNotFoundException [message=" + message + ", trace=" + trace + "]";
+		return "UserNotFoundException [message=" + message + ", trace=" + trace + "]";
 	}
 
 }

@@ -1,4 +1,4 @@
-package my.custom.learning.weblearn.users;
+package my.custom.learning.weblearn.controller;
 
 import java.net.URI;
 import java.time.LocalDateTime;
@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import my.custom.learning.weblearn.AppConstants;
-import my.custom.learning.weblearn.jpa.UserRepository;
-import my.custom.learning.weblearn.post.Post;
+import my.custom.learning.weblearn.entity.Post;
+import my.custom.learning.weblearn.entity.User;
+import my.custom.learning.weblearn.exceptions.UserNotFoundException;
+import my.custom.learning.weblearn.repository.UserRepository;
 
 @RestController
 public class UserJpaController {

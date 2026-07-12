@@ -1,11 +1,12 @@
-package my.custom.learning.weblearn.post;
+package my.custom.learning.weblearn.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import my.custom.learning.weblearn.jpa.PostRepository;
+import my.custom.learning.weblearn.entity.Post;
+import my.custom.learning.weblearn.repository.PostRepository;
 
 @Component
 public class PostService {
