@@ -64,13 +64,6 @@ public class PostController {
 	@PostMapping(path = "/user/{id}/post", version=AppConstants.API_VERSION)
 	public void createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
 		User user = userRepo.findById(id).orElseThrow();
-
-//		System.out.println(userService.findAll());
-		System.out.println(user);
-
-		
-		System.out.println(post);
-		
 		if(user == null) {
 			throw new UserNotFoundException("No user with id "+id, "trace");
 			
