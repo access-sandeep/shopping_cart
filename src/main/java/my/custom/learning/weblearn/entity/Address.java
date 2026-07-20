@@ -2,8 +2,8 @@ package my.custom.learning.weblearn.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,8 +24,8 @@ public class Address {
 
 	private String address_line2;
 
-	@NotNull(message = "The address line 1 cannot be null.")
-	private Integer city_id;
+//	@NotNull(message = "The address line 1 cannot be null.")
+//	private Integer city_id;
 
 	private String state;
 
@@ -35,18 +35,21 @@ public class Address {
 	@OneToOne
 	private User user;
 
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
+    private City city;
+	
 	public Address() {
 		super();
 	}
 
 	public Address(Long address_id, @NotNull(message = "The address line 1 cannot be null.") String address_line1,
-			String address_line2, @NotNull(message = "The address line 1 cannot be null.") Integer city_id,
+			String address_line2,
 			String state, String postal_code, LocalDateTime created_at) {
 		super();
 		this.address_id = address_id;
 		this.address_line1 = address_line1;
 		this.address_line2 = address_line2;
-		this.city_id = city_id;
 		this.state = state;
 		this.postal_code = postal_code;
 		this.created_at = created_at;
@@ -76,12 +79,12 @@ public class Address {
 		this.address_line2 = address_line2;
 	}
 
-	public Integer getCity_id() {
-		return city_id;
+	public City getCity() {
+		return city;
 	}
 
-	public void setCity_id(Integer city_id) {
-		this.city_id = city_id;
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	public String getState() {
@@ -111,7 +114,7 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [address_id=" + address_id + ", address_line1=" + address_line1 + ", address_line2="
-				+ address_line2 + ", city_id=" + city_id + ", state=" + state + ", postal_code=" + postal_code
+				+ address_line2 + ", state=" + state + ", postal_code=" + postal_code
 				+ ", created_at=" + created_at + "]";
 	}
 
