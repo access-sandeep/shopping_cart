@@ -40,7 +40,6 @@ public class Post {
 
 	public Post() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setId(Long id) {

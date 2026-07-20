@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import my.custom.learning.weblearn.exceptions.AddressNotFoundException;
 import my.custom.learning.weblearn.exceptions.PostNotDeletedException;
 import my.custom.learning.weblearn.exceptions.PostNotFoundException;
 import my.custom.learning.weblearn.exceptions.UserNotDeletedException;
@@ -28,7 +29,7 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@ExceptionHandler({UserNotFoundException.class, PostNotFoundException.class})
+	@ExceptionHandler({UserNotFoundException.class, PostNotFoundException.class, AddressNotFoundException.class})
 	public final @Nullable ResponseEntity<Object> handleUserNotFoundException(Exception ex, WebRequest request) throws Exception {
 		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
 		

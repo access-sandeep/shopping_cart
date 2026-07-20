@@ -1,17 +1,16 @@
 package my.custom.learning.weblearn.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -27,7 +26,7 @@ public class User {
 
 	@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The first name should only contain alphabets. The first alphabet of the first name must be a capital letter.")
 	private String first_name;
-	
+
 	@Pattern(regexp = "^[A-Z]{1}[a-z]+$", message = "The last name should only contain alphabets. The first alphabet of the last name must be a capital letter.")
 	private String last_name;
 
@@ -40,15 +39,20 @@ public class User {
 	@NotNull(message = "The phone number cannot be null.")
 	private String phone;
 
-	private Integer address_id;
-	
+	@NotNull(message = "The address id cannot be null.")
+	@Column(name = "address_id")
+	private Integer user_address_id;
+
+	@OneToOne
+	@JoinColumn(name = "address_id", referencedColumnName = "address_id", insertable = false, updatable = false)
+	private Address address;
+
 	private boolean is_active;
 
 	private LocalDateTime created_at;
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(Long user_id,
@@ -64,7 +68,6 @@ public class User {
 		this.email = email;
 		this.secret_key = secret_key;
 		this.phone = phone;
-		this.address_id = address_id;
 		this.is_active = is_active;
 		this.created_at = created_at;
 	}
@@ -109,14 +112,6 @@ public class User {
 		this.phone = phone;
 	}
 
-	public Integer getAddress_id() {
-		return address_id;
-	}
-
-	public void setAddress_id(Integer address_id) {
-		this.address_id = address_id;
-	}
-
 	public boolean isIs_active() {
 		return is_active;
 	}
@@ -130,7 +125,7 @@ public class User {
 	}
 
 	public void setCreated_at(LocalDateTime created_at) {
-		this.created_at = created_at==null ? LocalDateTime.now() : created_at;
+		this.created_at = created_at == null ? LocalDateTime.now() : created_at;
 	}
 
 	public String getSecret_key() {
@@ -141,10 +136,26 @@ public class User {
 		this.secret_key = secret_key;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Integer getUser_address_id() {
+		return user_address_id;
+	}
+
+	public void setUser_address_id(Integer user_address_id) {
+		this.user_address_id = user_address_id;
+	}
+
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
-				+ email + ", secret_key=" + secret_key + ", phone=" + phone + ", address_id=" + address_id
-				+ ", is_active=" + is_active + ", created_at=" + created_at + "]";
+				+ email + ", secret_key=" + secret_key + ", phone=" + phone + ", is_active=" + is_active
+				+ ", created_at=" + created_at + "]";
 	}
 }
