@@ -1,17 +1,15 @@
 package my.custom.learning.weblearn.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -40,7 +38,9 @@ public class User {
 	@NotNull(message = "The phone number cannot be null.")
 	private String phone;
 
-	private Integer address_id;
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 	
 	private boolean is_active;
 
@@ -63,7 +63,6 @@ public class User {
 		this.email = email;
 		this.secret_key = secret_key;
 		this.phone = phone;
-		this.address_id = address_id;
 		this.is_active = is_active;
 		this.created_at = created_at;
 	}
@@ -108,14 +107,6 @@ public class User {
 		this.phone = phone;
 	}
 
-	public Integer getAddress_id() {
-		return address_id;
-	}
-
-	public void setAddress_id(Integer address_id) {
-		this.address_id = address_id;
-	}
-
 	public boolean isIs_active() {
 		return is_active;
 	}
@@ -140,10 +131,18 @@ public class User {
 		this.secret_key = secret_key;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
-				+ email + ", secret_key=" + secret_key + ", phone=" + phone + ", address_id=" + address_id
+				+ email + ", secret_key=" + secret_key + ", phone=" + phone 
 				+ ", is_active=" + is_active + ", created_at=" + created_at + "]";
 	}
 }
