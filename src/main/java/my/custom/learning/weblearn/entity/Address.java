@@ -2,13 +2,13 @@ package my.custom.learning.weblearn.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 
@@ -24,8 +24,9 @@ public class Address {
 
 	private String address_line2;
 
-//	@NotNull(message = "The address line 1 cannot be null.")
-//	private Integer city_id;
+	@NotNull(message = "The city id cannot be null.")
+	@Column(name = "city_id")
+	private Integer address_city_id;
 
 	private String state;
 
@@ -36,7 +37,7 @@ public class Address {
 	private User user;
 
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id", updatable = false, insertable = false)
     private City city;
 	
 	public Address() {
@@ -109,6 +110,14 @@ public class Address {
 
 	public void setCreated_at(LocalDateTime created_at) {
 		this.created_at = created_at;
+	}
+
+	public Integer getAddress_city_id() {
+		return address_city_id;
+	}
+
+	public void setAddress_city_id(Integer address_city_id) {
+		this.address_city_id = address_city_id;
 	}
 
 	@Override
