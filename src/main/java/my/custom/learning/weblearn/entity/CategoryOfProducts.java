@@ -4,25 +4,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "categories")
-public class Cateogry {
+public class CategoryOfProducts {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoty_seq")
+	@SequenceGenerator(name = "categoty_seq", sequenceName = "categoty_seq", initialValue = 2, allocationSize = 1)
 	private Long category_id;
 
-	@NotNull(message = "The brand name cannot be null.")
+	@NotNull(message = "The category name cannot be null.")
 	private String category_name;
 
 	private String description;
 
-	public Cateogry() {
+	public CategoryOfProducts() {
 		super();
 	}
 
-	public Cateogry(Long category_id, @NotNull(message = "The brand name cannot be null.") String category_name,
+	public CategoryOfProducts(Long category_id, @NotNull(message = "The category name cannot be null.") String category_name,
 			String description) {
 		super();
 		this.category_id = category_id;

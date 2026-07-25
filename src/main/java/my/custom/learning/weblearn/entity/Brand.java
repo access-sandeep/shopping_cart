@@ -4,13 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "brands")
 public class Brand {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "brand_seq")
+	@SequenceGenerator(name = "brand_seq", sequenceName = "brand_seq", initialValue = 2, allocationSize = 1)
 	private Long brand_id;
 
 	@NotNull(message = "The brand name cannot be null.")

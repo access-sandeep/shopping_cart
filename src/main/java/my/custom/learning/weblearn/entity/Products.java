@@ -53,7 +53,7 @@ public class Products {
 	
 	@OneToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
-	private Cateogry category;
+	private CategoryOfProducts category;
 
 	public Products() {
 		super();
@@ -178,7 +178,7 @@ public class Products {
 		return brand;
 	}
 
-	public Cateogry getCategory() {
+	public CategoryOfProducts getCategory() {
 		return category;
 	}
 
