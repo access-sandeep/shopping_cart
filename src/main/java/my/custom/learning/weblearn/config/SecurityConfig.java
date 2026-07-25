@@ -16,7 +16,12 @@ public class SecurityConfig {
 			.csrf(csrf -> csrf.disable()) // Disable CSRF for testing (enable in production)
 			.authorizeHttpRequests(authz -> authz
 				.requestMatchers("/login").permitAll() // Allow /login without authentication
-				.requestMatchers("/v3/api-docs", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll() // Allow Swagger UI
+				.requestMatchers(
+						"/v3/api-docs", 
+						"/swagger-ui.html", 
+						"/swagger-ui/**", 
+						"/v3/api-docs/**"
+				).permitAll() // Allow Swagger UI
 				.anyRequest().authenticated() // All other requests require authentication
 			)
 			.httpBasic(basic -> {}); // Enable HTTP Basic authentication
