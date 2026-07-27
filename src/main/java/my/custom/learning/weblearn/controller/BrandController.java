@@ -35,7 +35,7 @@ public class BrandController {
 	}
 	
 	@GetMapping(path = "/brand/{id}", version=AppConstants.API_VERSION)
-	public Optional<Brand> findById(@PathVariable int id) {
+	public Optional<Brand> findById(@PathVariable Long id) {
 		Optional<Brand> brand = repository.findById(id);
 		if(brand.isEmpty()) {
 			throw new BrandNotFoundException("No user found with the user id = "+id, "Line number 30");

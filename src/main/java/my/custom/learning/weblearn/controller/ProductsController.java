@@ -49,7 +49,7 @@ public class ProductsController {
 	}
 
 	@GetMapping(path = "/products/{id}", version = AppConstants.API_VERSION)
-	public Optional<Products> findById(@PathVariable int id) {
+	public Optional<Products> findById(@PathVariable Long id) {
 		Optional<Products> product = repository.findById(id);
 		if (product.isEmpty()) {
 			throw new ProductNotFoundException("No product found with the product id = " + id,

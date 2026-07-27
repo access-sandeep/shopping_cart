@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,7 @@ public class RegistrationController {
 	}
 
 	@PostMapping(path = "/register/user", version=AppConstants.API_VERSION)
+	@Transactional
 	public ResponseEntity<User> registerUser(@Valid @RequestBody RequestRegisterUser request) {
 		LocalDateTime localDateTime = LocalDateTime.now();
 		Address requestedAddress = request.getAddress();
@@ -44,7 +46,7 @@ public class RegistrationController {
 			URI location = URI.create("/user/"+response.getUser_id());
 			return ResponseEntity.created(location).build();
 		} catch (Exception e) {
-			throw new RuntimeException("Error occurred while processing the request: " + e.getMessage());
+			throw new RuntimeException("Error occurred while processing the request: " + e.getMessage(), e);
 		}
 	}
 	
@@ -52,21 +54,25 @@ public class RegistrationController {
 		address.setCreated_at(localDateTime);
 		try {
 			Address createdAddress = addressRepository.save(address);
+			System.out.println("Address saved with ID: " + createdAddress.getAddress_id());
 			return createdAddress.getAddress_id();
 		} catch (Exception e) {
-			throw new RuntimeException("Error occurred while saving address: " + e.getMessage());
+			throw new RuntimeException("Error occurred while saving address: " + e.getMessage(), e);
 		}
 	}
 	
 	private User saveUser(User user, Long address_id, LocalDateTime localDateTime) throws RuntimeException {
 		user.setCreated_at(localDateTime);
-		user.setUser_address_id(address_id.intValue());
+		user.setUser_address_id(address_id);
+		System.out.println("Address saved with ID in save: " + address_id);
 		try {
 			user.setSecret_key(Md5Converter.md5Hash(user.getSecret_key()));
-			User createdUser = userRepository.save(user);
+			System.out.println("Address saved with ID in secret: " + user);
+			User createdUser = userRepository.saveAndFlush(user);
+			System.out.println("User saved with ID: " + createdUser.getUser_id());
 			return createdUser;
 		} catch (Exception e) {
-			throw new RuntimeException("Error occurred while saving user: " + e.getMessage());
+			throw new RuntimeException("Error occurred while saving user: " + e.getMessage(), e);
 		}
 	}
 	

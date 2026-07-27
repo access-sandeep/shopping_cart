@@ -37,7 +37,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping(path = "/category/{id}", version=AppConstants.API_VERSION)
-	public Optional<CategoryOfProducts> findById(@PathVariable int id) {
+	public Optional<CategoryOfProducts> findById(@PathVariable Long id) {
 		Optional<CategoryOfProducts> category = repository.findById(id);
 		if(category.isEmpty()) {
 			throw new CategoryNotFoundException("No user found with the user id = "+id, "Line number 30");

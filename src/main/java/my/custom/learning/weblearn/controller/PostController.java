@@ -52,7 +52,7 @@ public class PostController {
 	}
 
 	@GetMapping(path = "/post/{id}", version = AppConstants.API_VERSION)
-	public Optional<Post> findById(@PathVariable int id) {
+	public Optional<Post> findById(@PathVariable Long id) {
 		try {
 			Post post = postService.findOne(id);
 			return Optional.ofNullable(post);
@@ -62,7 +62,7 @@ public class PostController {
 	}
 
 	@PostMapping(path = "/user/{id}/post", version=AppConstants.API_VERSION)
-	public void createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
+	public void createPostForUser(@PathVariable Long id, @Valid @RequestBody Post post) {
 		User user = userRepo.findById(id).orElseThrow();
 		if(user == null) {
 			throw new UserNotFoundException("No user with id "+id, "trace");

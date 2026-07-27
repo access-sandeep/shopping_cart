@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import my.custom.learning.weblearn.entity.CategoryOfProducts;
 
-public interface CategoryRepository extends JpaRepository<CategoryOfProducts, Integer> {
+public interface CategoryRepository extends JpaRepository<CategoryOfProducts, Long> {
 
 	// Custom query: user password is stored in the `secret_key` property on the User entity.
 //	@Query("SELECT u FROM users u WHERE u.email = :email AND u.secret_key = :password")
