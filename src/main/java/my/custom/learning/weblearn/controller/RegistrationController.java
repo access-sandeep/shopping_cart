@@ -83,7 +83,6 @@ public class RegistrationController {
 		}
 		
 		user.setRoles(roles);
-		userRepository.save(user);  // Save user with roles
 		return roles;
 	}
 
