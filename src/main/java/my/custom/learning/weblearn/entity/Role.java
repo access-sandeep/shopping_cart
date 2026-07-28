@@ -24,9 +24,6 @@ public class Role {
 	@Column(name = "role_name", nullable = false, unique = true)
 	private String roleName;
 	
-	@Column(name = "description")
-	private String description;
-	
 	public Role() {
 		super();
 	}
@@ -37,13 +34,6 @@ public class Role {
 	public Role(@JsonProperty("roleName") String roleName) {
 		super();
 		this.roleName = roleName;
-		this.description = null;
-	}
-	
-	public Role(String roleName, String description) {
-		super();
-		this.roleName = roleName;
-		this.description = description;
 	}
 	
 	public Long getRoleId() {
@@ -62,16 +52,8 @@ public class Role {
 		this.roleName = roleName;
 	}
 	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
 	@Override
 	public String toString() {
-		return "Role [roleId=" + roleId + ", roleName=" + roleName + ", description=" + description + "]";
+		return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
 	}
 }
