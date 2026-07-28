@@ -39,7 +39,7 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/user/{id}", version=AppConstants.API_VERSION)
-	public Optional<User> findById(@PathVariable int id) {
+	public Optional<User> findById(@PathVariable Long id) {
 		Optional<User> user = repository.findById(id);
 		if(user.isEmpty()) {
 			throw new UserNotFoundException("No user found with the user id = "+id, "Line number 30");

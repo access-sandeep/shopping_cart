@@ -37,7 +37,7 @@ public class AddressController {
 	}
 	
 	@GetMapping(path = "/address/{id}", version=AppConstants.API_VERSION)
-	public Optional<Address> findById(@PathVariable int id) {
+	public Optional<Address> findById(@PathVariable Long id) {
 		Optional<Address> address = repository.findById(id);
 		if(address.isEmpty()) {
 			throw new AddressNotFoundException("No address found with the address id = "+id, "Line number 43");
