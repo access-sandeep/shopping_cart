@@ -11,5 +11,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	// Custom query: user password is stored in the `secret_key` property on the User entity.
 	@Query("SELECT u FROM users u WHERE u.email = :email AND u.secret_key = :password")
 	User findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+	
+	// Find user by email for authentication
+	User findByEmail(String email);
 
 }
