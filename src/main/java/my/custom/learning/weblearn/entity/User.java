@@ -180,6 +180,7 @@ public class User implements UserDetails {
 
 	// UserDetails implementation methods
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();
 		for (Role role : roles) {
@@ -189,31 +190,37 @@ public class User implements UserDetails {
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public String getPassword() {
 		return secret_key;
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public String getUsername() {
 		return email;
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
 	@Override
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public boolean isEnabled() {
 		return is_active;
 	}
