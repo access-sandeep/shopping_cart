@@ -15,7 +15,6 @@ public class Brand {
 	@SequenceGenerator(name = "brand_seq", sequenceName = "brand_seq", initialValue = 2, allocationSize = 1)
 	private Long brand_id;
 
-	@NotNull(message = "The brand name cannot be null.")
 	private String brand_name;
 
 	private String description;
