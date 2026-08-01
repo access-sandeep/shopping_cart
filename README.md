@@ -1,4 +1,4 @@
-# WebLearn - Spring Boot REST API
+# WebLearn - Spring Boot REST API for the shopping cart
 
 A comprehensive Spring Boot REST API application for managing e-commerce operations including users, products, inventory, brands, categories, warehouses, and addresses. This project demonstrates Spring Data JPA, RESTful web services, JWT authentication, role-based access control, exception handling, and data validation using Jakarta EE annotations.
 
