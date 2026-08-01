@@ -12,22 +12,25 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity(name = "product_inventory")
 public class ProductInventory {
+	
+	public interface Create {}
+    public interface Update {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_inventory_seq")
 	@SequenceGenerator(name = "product_inventory_seq", sequenceName = "product_inventory_seq", initialValue = 1, allocationSize = 1)
 	private Long inventory_id;
 
-	@NotNull(message = "The product id cannot be null.")
+	@NotNull(groups = Create.class, message = "The product id cannot be null.")
 	private Long product_id;
 
-	@NotNull(message = "The warehouse id cannot be null.")
+	@NotNull(groups = Create.class, message = "The warehouse id cannot be null.")
 	private Long warehouse_id;
 
-	@PositiveOrZero(message = "The quantity available must be zero or a positive number.")
+	@PositiveOrZero(groups = Create.class, message = "The quantity available must be zero or a positive number.")
 	private Integer quantity_available;
 
-	@PositiveOrZero(message = "The reorder level must be zero or a positive number.")
+	@PositiveOrZero(groups = Create.class, message = "The reorder level must be zero or a positive number.")
 	private Integer reorder_level;
 
 	@OneToOne
