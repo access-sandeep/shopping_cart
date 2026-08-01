@@ -9,19 +9,23 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
+import my.custom.learning.weblearn.entity.Products.Create;
 
 @Entity(name = "warehouses")
 public class Warehouse {
+	
+	public interface Create {}
+    public interface Update {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "warehouse_seq")
 	@SequenceGenerator(name = "warehouse_seq", sequenceName = "warehouse_seq", initialValue = 1, allocationSize = 1)
 	private Long warehouse_id;
 
-	@NotNull(message = "The warehouse name cannot be null.")
+	@NotNull(groups = Create.class, message = "The warehouse name cannot be null.")
 	private String warehouse_name;
 
-	@NotNull(message = "The address id cannot be null.")
+	@NotNull(groups = Create.class, message = "The address id cannot be null.")
 	@Column(name = "address_id")
 	private Long warehouse_address_id;
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,8 +45,15 @@ public class BrandController {
 		return brand;
 	}
 
-	@PostMapping(path = { "/brand/upsert", "/brand/upsert/{id}" }, version = AppConstants.API_VERSION)
-	public ResponseEntity<Brand> addBrand(@Valid @RequestBody Brand brand, @PathVariable(required = false) Long id) {
+	@PostMapping(path = "/brand/upsert", version = AppConstants.API_VERSION)
+	public ResponseEntity<Brand> addBrand(@Validated(Brand.Create.class) @RequestBody Brand brand) {
+		Brand createdBrand = repository.save(brand);
+		URI location = URI.create("/brand/" + createdBrand.getBrand_id());
+		return ResponseEntity.created(location).build();
+	}
+
+	@PostMapping(path = "/brand/upsert/{id}", version = AppConstants.API_VERSION)
+	public ResponseEntity<Brand> updateBrand(@Validated(Brand.Update.class) @RequestBody Brand brand, @PathVariable Long id) {
 		Optional<Brand> savedBrand = java.util.Optional.empty();
 		if (id != null) {
 			brand.setBrand_id(id);

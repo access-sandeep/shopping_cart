@@ -206,6 +206,39 @@
       "response": []
     },
     {
+      "name": "update brand v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "create a new category v1.1.0",
       "request": {
         "method": "POST",
@@ -241,6 +274,16 @@
     {
       "name": "create a new warehouse v1.1.0",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kZWVwLnRhbGtAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE3ODU1MDA5NDEsImV4cCI6MTc4NTU4NzM0MX0.3uytW92GNB1vomGQSeTQrMfktZ6bE0EtXecG_kLuA_5U5wYBqhO1CgEZ3nqqOyNzQ9UBJnTg4CP_9FJL9n8gSg",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [
           {
@@ -251,7 +294,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "raw": "{\r\n    \"warehouse_name\": \"Mullas\",\r\n    \"warehouse_address_id\": 4\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -259,13 +302,57 @@
           }
         },
         "url": {
-          "raw": "{{baseurl9090}}/user/add",
+          "raw": "{{baseurl9090}}/warehouse/upsert",
           "host": [
             "{{baseurl9090}}"
           ],
           "path": [
-            "user",
-            "add"
+            "warehouse",
+            "upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update warehouse v1.1.0",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kZWVwLnRhbGtAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE3ODU1NjkxMjgsImV4cCI6MTc4NTY1NTUyOH0.XYTgfCA1P2eiJzkioQ-u6abT5yykmB-t3xhShskPe15SldGoY94XoUPDTdBMRCiJ-s-y6Hi0scO05C7ctT9KDQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"warehouse_name\": \"Mullas\",\r\n    \"warehouse_address_id\": 4\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/warehouse/upsert/2",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "warehouse",
+            "upsert",
+            "2"
           ]
         }
       },
@@ -751,6 +838,41 @@
           ],
           "path": [
             "user",
+            "delete",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete a warehouse version 1.1.0",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kZWVwLnRhbGtAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE3ODU1NjkxMjgsImV4cCI6MTc4NTY1NTUyOH0.XYTgfCA1P2eiJzkioQ-u6abT5yykmB-t3xhShskPe15SldGoY94XoUPDTdBMRCiJ-s-y6Hi0scO05C7ctT9KDQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/warehouse/delete/3",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "warehouse",
             "delete",
             "3"
           ]
