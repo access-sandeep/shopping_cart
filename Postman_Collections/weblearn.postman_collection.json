@@ -1,0 +1,885 @@
+{
+  "info": {
+    "_postman_id": "375f192d-cf79-4016-82cb-90e99a9b91eb",
+    "name": "weblearn",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "1157546"
+  },
+  "item": [
+    {
+      "name": "create a new user v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Save post with user id v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"description\": \"ljlasjfasfasf\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/10001/post",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "10001",
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new product v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new address v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new brand v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new category v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new warehouse v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create a new product_inventory v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post product images version1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register User v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all users version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/users",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get user with id v1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/user/10001",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "10001"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all posts v1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/posts",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get posts of a user by id v1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/users",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get post with id v1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/post/10001",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "post",
+            "10001"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all products v1.1.0",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kZWVwLm11a2hlcmppQGNvZ25pemFudC5jb20iLCJpYXQiOjE3ODQ5NjY5MzksImV4cCI6MTc4NTA1MzMzOX0.J3yGsIxbR7Qc0RCJ-SVbM_KEHSt09aSh2_r9fp7D2nXV-t1WStz7S3dtkzb4gEQn-sJmeh6ftsUDRer-7ti2Sg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/products",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all addresses version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all brands version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all warehouses version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all product_inventories version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all categories version1.1.0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/addresses",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "addresses"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete an user v1.1.0",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/user/delete/10001",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "delete",
+            "10001"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete a brand version 1.1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/user/delete/3",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "delete",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete a category version 1.1",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/user/delete/3",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "delete",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch an user v1.1.0",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"Prarthana.Love.Mukherji@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/update/10003",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "update",
+            "10003"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update an user by name v1.1.0",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"Prarthana.Love.Mukherji@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/update/name/10003",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "update",
+            "name",
+            "10003"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update an user by name",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Sanda Mukherjee\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/update/name/10",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "update",
+            "name",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "patch an user",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Mukherji\",\r\n    \"email\": \"prathana.talk@gmail.com\",\r\n    \"isAdmin\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/update/278",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "update",
+            "278"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseurl9090",
+      "value": "http://localhost:9090/1.0.0"
+    },
+    {
+      "key": "baseurl8080",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "version1.1",
+      "value": ""
+    },
+    {
+      "key": "version1.0",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
