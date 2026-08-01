@@ -701,6 +701,31 @@
       "response": []
     },
     {
+      "name": "delete a product inventory version 1.1.0",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "1.0.0",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseurl9090}}/user/delete/3",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "delete",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "patch an user v1.1.0",
       "request": {
         "method": "PATCH",
