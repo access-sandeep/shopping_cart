@@ -6,18 +6,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
+import my.custom.learning.weblearn.entity.Products.Create;
 
 @Entity(name = "brands")
 public class Brand {
+	
+	public interface Create {}
+    public interface Update {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "brand_seq")
 	@SequenceGenerator(name = "brand_seq", sequenceName = "brand_seq", initialValue = 2, allocationSize = 1)
 	private Long brand_id;
 
-	@NotNull(message = "The brand name cannot be null.")
+	@NotNull(groups = Create.class, message = "The brand name cannot be null.")
 	private String brand_name;
 
+	@NotNull(groups = Create.class, message = "The brand description cannot be null.")
 	private String description;
 
 	public Brand() {

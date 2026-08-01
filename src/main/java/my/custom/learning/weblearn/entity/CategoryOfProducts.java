@@ -15,7 +15,6 @@ public class CategoryOfProducts {
 	@SequenceGenerator(name = "categoty_seq", sequenceName = "categoty_seq", initialValue = 2, allocationSize = 1)
 	private Long category_id;
 
-	@NotNull(message = "The category name cannot be null.")
 	private String category_name;
 
 	private String description;
