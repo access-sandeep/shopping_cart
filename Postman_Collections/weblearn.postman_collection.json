@@ -107,6 +107,39 @@
       "response": []
     },
     {
+      "name": "update a product v1.1.0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-API-VERSION",
+            "value": "{{version1.1}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Prarthana Swami\",\r\n    \"email\": \"mrs.prarthana@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseurl9090}}/user/add",
+          "host": [
+            "{{baseurl9090}}"
+          ],
+          "path": [
+            "user",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "create a new address v1.1.0",
       "request": {
         "method": "POST",
