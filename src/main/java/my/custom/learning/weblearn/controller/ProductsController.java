@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,9 +60,58 @@ public class ProductsController {
 	}
 
 	@PostMapping(path = "/products/add", version = AppConstants.API_VERSION)
-	public ResponseEntity<Products> addProduct(@Valid @RequestBody Products product) {
+	public ResponseEntity<Products> addProduct(@Validated(Products.Create.class) @RequestBody Products product) {
 		LocalDateTime localDateTime = LocalDateTime.now();
 		product.setCreated_at(localDateTime);
+		Products createProduct = repository.save(product);
+		URI location = URI.create("/products/" + createProduct.getProduct_id());
+		return ResponseEntity.created(location).build();
+	}
+
+	@PostMapping(path = "/products/update/{id}", version = AppConstants.API_VERSION)
+	public ResponseEntity<Products> updateProduct(@Validated(Products.Update.class) @RequestBody Products product, @PathVariable Long id) {
+		product.setProduct_id(id);
+		Products existingProduct = repository.findById(id).get();
+		if(product.getProduct_name() == null) {
+			product.setProduct_name(existingProduct.getProduct_name());
+		}
+		
+		if(product.getDescription() == null) {
+			product.setDescription(existingProduct.getDescription());
+		}
+		
+		if(product.getSku() == null) {
+			product.setSku(existingProduct.getSku());
+		}
+		
+		if(product.getBrand_id() == null) {
+			product.setBrand_id(existingProduct.getBrand_id());
+		}
+		
+		if(product.getCategory_id() == null) {
+			product.setCategory_id(existingProduct.getCategory_id());
+		}
+		
+		if(product.getPrice() == null) {
+			product.setPrice(existingProduct.getPrice());
+		}
+		product.setCreated_at(existingProduct.getCreated_at());
+		product.setUpdated_at(LocalDateTime.now());
+				
+		if(product.isIs_active() == null) {
+			product.setIs_active(existingProduct.isIs_active());
+		}
+		
+		if(product.getDiscount_price() == null) {
+			product.setDiscount_price(existingProduct.getDiscount_price());
+		}
+		
+		if(product.getWeight() == null) {
+			product.setWeight(existingProduct.getWeight());
+		}
+		
+		System.out.println("Product to be updated: " + product);
+		
 		Products createProduct = repository.save(product);
 		URI location = URI.create("/products/" + createProduct.getProduct_id());
 		return ResponseEntity.created(location).build();

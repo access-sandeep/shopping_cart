@@ -9,41 +9,46 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.AssertFalse;
 import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "products")
 public class Products {
+	
+	public interface Create {}
+    public interface Update {}
+    
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq")
 	@SequenceGenerator(name = "products_seq", sequenceName = "products_seq", initialValue = 10000, allocationSize = 1)
 	private Long product_id;
 	
-	@NotNull(message = "The product name cannot be null.")
+	@NotNull(groups = Create.class, message = "The product name cannot be null.")
 	private String product_name;
 	
-	@NotNull(message = "The product description cannot be null.")
+	@NotNull(groups = Create.class, message = "The product description cannot be null.")
 	private String description;
 	
-	@NotNull(message = "The product SKU cannot be null.")
+	@NotNull(groups = Create.class, message = "The product SKU cannot be null.")
 	private String sku;
 	
-	@NotNull(message = "The brand ID cannot be null.")
+	@NotNull(groups = Create.class, message = "The brand ID cannot be null.")
 	private Long brand_id;
 	
-	@NotNull(message = "The category ID cannot be null.")
+	@NotNull(groups = Create.class, message = "The category ID cannot be null.")
 	private Long category_id;
 	
-	@NotNull(message = "The product price cannot be null.")
+	@NotNull(groups = Create.class, message = "The product price cannot be null.")
 	private Double price;
 	
-	@NotNull(message = "The product discount price cannot be null.")
+	@NotNull(groups = Create.class, message = "The product discount price cannot be null.")
 	private Double discount_price;
 	
-	@NotNull(message = "The product weight cannot be null.")
+	@NotNull(groups = Create.class, message = "The product weight cannot be null.")
 	private Double weight;
 	
-	@NotNull(message = "The product active status cannot be null.")
-	private boolean is_active;
+	private Boolean is_active = true;
+	
 	private LocalDateTime created_at;
 	private LocalDateTime updated_at;
 	
@@ -61,7 +66,7 @@ public class Products {
 	}
 	
 	public Products(Long product_id, String product_name, String description, String sku, Long brand_id,
-			Long category_id, Double price, Double discount_price, Double weight, boolean is_active,
+			Long category_id, Double price, Double discount_price, Double weight, Boolean is_active,
 			LocalDateTime created_at, LocalDateTime updated_at) {
 		super();
 		this.product_id = product_id;
@@ -150,11 +155,11 @@ public class Products {
 		this.weight = weight;
 	}
 
-	public boolean isIs_active() {
+	public Boolean isIs_active() {
 		return is_active;
 	}
 
-	public void setIs_active(boolean is_active) {
+	public void setIs_active(Boolean is_active) {
 		this.is_active = is_active;
 	}
 
