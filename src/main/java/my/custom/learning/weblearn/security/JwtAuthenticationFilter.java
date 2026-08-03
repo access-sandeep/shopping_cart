@@ -31,7 +31,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 
-			String token = authHeader.substring(7);
+			String token = authHeader.substring(7).trim();
+
+			// Some clients (or misconfigured code) send the token wrapped in quotes: "ey...".
+			// Be tolerant and remove surrounding quotes if present so a valid token isn't rejected.
+			if (token.length() >= 2 && token.startsWith("\"") && token.endsWith("\"")) {
+				token = token.substring(1, token.length() - 1);
+			}
 
 			if (jwtService.isValid(token)) {
 
