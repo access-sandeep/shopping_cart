@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
 import my.custom.learning.weblearn.AppConstants;
 import my.custom.learning.weblearn.entity.Brand;
 import my.custom.learning.weblearn.exceptions.BrandNotFoundException;
