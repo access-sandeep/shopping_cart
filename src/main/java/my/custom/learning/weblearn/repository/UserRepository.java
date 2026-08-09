@@ -15,4 +15,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	// Find user by email for authentication
 	User findByEmail(String email);
 
+	// Fetch user with cart (join fetch to load cart eagerly in a single query)
+	@Query("select u from users u left join fetch u.cart where u.user_id = :id")
+	java.util.Optional<User> findByIdWithCart(@Param("id") Long id);
+
+	// Fetch all users with cart
+	@Query("select distinct u from users u left join fetch u.cart")
+	java.util.List<User> findAllWithCart();
+
 }

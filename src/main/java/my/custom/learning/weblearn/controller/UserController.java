@@ -35,12 +35,12 @@ public class UserController {
 
 	@GetMapping(path = "/users", version=AppConstants.API_VERSION)
 	public List<User> findAll() {
-		return repository.findAll();
+		return repository.findAllWithCart();
 	}
 	
 	@GetMapping(path = "/user/{id}", version=AppConstants.API_VERSION)
 	public Optional<User> findById(@PathVariable Long id) {
-		Optional<User> user = repository.findById(id);
+		Optional<User> user = repository.findByIdWithCart(id);
 		if(user.isEmpty()) {
 			throw new UserNotFoundException("No user found with the user id = "+id, "Line number 30");
 		}

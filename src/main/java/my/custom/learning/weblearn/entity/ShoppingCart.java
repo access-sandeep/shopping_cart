@@ -8,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity(name = "shopping_cart")
 public class ShoppingCart {
@@ -25,6 +28,11 @@ public class ShoppingCart {
 
 	@NotNull(groups = Create.class, message = "No associated cart user mentioned")
 	private Long user_id;
+    
+	@OneToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+	@JsonBackReference
+	private User user;
 
 	private LocalDateTime created_at;
 
@@ -55,6 +63,16 @@ public class ShoppingCart {
 
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+		// keep the foreign key column in sync when assigning a User
+		this.user_id = user == null ? null : user.getUser_id();
 	}
 
 	public LocalDateTime getCreated_at() {
