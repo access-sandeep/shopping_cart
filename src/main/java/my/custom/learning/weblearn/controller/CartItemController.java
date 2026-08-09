@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import my.custom.learning.weblearn.AppConstants;
+import my.custom.learning.weblearn.dto.CartItemProjectionDto;
 import my.custom.learning.weblearn.entity.CartItem;
 import my.custom.learning.weblearn.repository.CartItemRepository;
 
@@ -39,8 +40,25 @@ public class CartItemController {
 		return repository.findById(id);
 	}
 	
+	@GetMapping(path = "/cart_item/product/{cart_id}/{product_id}", version = AppConstants.API_VERSION)
+	public Optional<CartItemProjectionDto> findByCartProductId(@PathVariable Long cart_id, @PathVariable Long product_id) throws Exception {
+		return repository.findByCartProductId(cart_id, product_id);
+	}
+	
 	@PostMapping(path = "/cart_item/add", version = AppConstants.API_VERSION)
 	public ResponseEntity<CartItem> addCartItem(@Validated(CartItem.Create.class) @RequestBody CartItem cartItem) {
+		Optional<CartItemProjectionDto> isProdInCart = repository.findByCartProductId(cartItem.getCart_id(), cartItem.getProduct_id());
+		try {
+			if(isProdInCart != null && isProdInCart.get().getQuantity() > 0) {
+				cartItem.setCart_item_id(isProdInCart.get().getCartItemId());
+				int newQty = isProdInCart.get().getQuantity() + cartItem.getQuantity();
+				cartItem.setQuantity(newQty);
+			} else {
+				cartItem.setQuantity(cartItem.getQuantity());
+			}
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
 		CartItem createdCartItem = repository.save(cartItem);
 		URI location = URI.create("/cart_item/" + createdCartItem.getCart_item_id());
 		return ResponseEntity.created(location).build();
