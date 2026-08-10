@@ -17,6 +17,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -69,6 +71,10 @@ public class User implements UserDetails {
 		inverseJoinColumns = @JoinColumn(name = "role_id")
 	)
 	private Set<Role> roles = new HashSet<>();
+
+	@OneToOne(mappedBy = "user")
+	@JsonManagedReference
+	private ShoppingCart cart;
 
 	public User() {
 		super();
@@ -231,5 +237,13 @@ public class User implements UserDetails {
 	
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public ShoppingCart getCart() {
+		return cart;
+	}
+
+	public void setCart(ShoppingCart cart) {
+		this.cart = cart;
 	}
 }
