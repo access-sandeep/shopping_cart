@@ -48,12 +48,14 @@ public class CartItemController {
 	@PostMapping(path = "/cart_item/add", version = AppConstants.API_VERSION)
 	public ResponseEntity<CartItem> addCartItem(@Validated(CartItem.Create.class) @RequestBody CartItem cartItem) {
 		Optional<CartItemProjectionDto> isProdInCart = repository.findByCartProductId(cartItem.getCart_id(), cartItem.getProduct_id());
+		System.out.println("isProdInCart: " + isProdInCart);
 		try {
-			if(isProdInCart != null && isProdInCart.get().getQuantity() > 0) {
+			if(!isProdInCart.isEmpty() && isProdInCart != null && isProdInCart.get().getQuantity() > 0) {
 				cartItem.setCart_item_id(isProdInCart.get().getCartItemId());
 				int newQty = isProdInCart.get().getQuantity() + cartItem.getQuantity();
 				cartItem.setQuantity(newQty);
 			} else {
+				System.out.println("cartItem.getQuantity(): " + cartItem.getQuantity());
 				cartItem.setQuantity(cartItem.getQuantity());
 			}
 		} catch (Exception e) {

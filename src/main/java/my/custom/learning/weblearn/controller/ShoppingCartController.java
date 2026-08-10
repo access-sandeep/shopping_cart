@@ -32,7 +32,7 @@ public class ShoppingCartController {
 	public ResponseEntity<ShoppingCart> addShoppingCart(@Validated(ShoppingCart.Create.class) @RequestBody ShoppingCart shoppingCart) {
 		ShoppingCart createdShoppingCart = repository.save(shoppingCart);
 		URI location = URI.create("/shopping_cart/" + createdShoppingCart.getCart_id());
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.created(location).body(createdShoppingCart);
 	}
 
 	@GetMapping(path = "/shopping_cart/{id}", version = AppConstants.API_VERSION)
