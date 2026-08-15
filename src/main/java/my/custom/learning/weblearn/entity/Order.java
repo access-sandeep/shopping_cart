@@ -29,7 +29,7 @@ public class Order {
 	@NotNull(groups = Create.class, message = "No associated cart mentioned")
 	private Long shipping_address_id;
 
-	private Integer coupon_id;
+	private Long coupon_id;
 
 	@NotNull(groups = Create.class, message = "Order status cannot be null")
 	private String order_status;
@@ -50,7 +50,7 @@ public class Order {
 
 	public Order(Long order_id, @NotNull(groups = Create.class, message = "No associated user mentioned") Long user_id,
 			@NotNull(groups = Create.class, message = "No associated cart mentioned") Long shipping_address_id,
-			Integer coupon_id,
+			Long coupon_id,
 			@NotNull(groups = Create.class, message = "Order status cannot be null") String order_status,
 			@NotNull(groups = Create.class, message = "Payment status cannot be null") String payment_status,
 			@Positive(groups = Create.class, message = "subtotal must be a positive number, zero is not possible") Double total_amount,
@@ -63,7 +63,7 @@ public class Order {
 		this.order_status = order_status;
 		this.payment_status = payment_status;
 		this.total_amount = total_amount;
-		this.order_date = order_date;
+		this.order_date = LocalDateTime.now();
 	}
 
 	public Long getOrder_id() {
@@ -90,12 +90,12 @@ public class Order {
 		this.shipping_address_id = shipping_address_id;
 	}
 
-	public Integer getCoupon_id() {
+	public Long getCoupon_id() {
 		return coupon_id;
 	}
 
-	public void setCoupon_id(Integer coupon_id) {
-		this.coupon_id = coupon_id;
+	public void setCoupon_id(Long long1) {
+		this.coupon_id = long1;
 	}
 
 	public String getOrder_status() {
@@ -126,8 +126,8 @@ public class Order {
 		return order_date;
 	}
 
-	public void setOrder_date(LocalDateTime order_date) {
-		this.order_date = order_date;
+	public void setOrder_date() {
+		this.order_date = LocalDateTime.now();
 	}
 
 	@Override

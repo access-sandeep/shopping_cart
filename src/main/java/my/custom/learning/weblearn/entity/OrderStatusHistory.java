@@ -48,7 +48,7 @@ public class OrderStatusHistory {
 		this.history_id = history_id;
 		this.order_id = order_id;
 		this.status = status;
-		this.changed_at = changed_at;
+		this.changed_at = LocalDateTime.now();
 		this.remarks = remarks;
 	}
 
@@ -80,8 +80,8 @@ public class OrderStatusHistory {
 		return changed_at;
 	}
 
-	public void setChanged_at(LocalDateTime changed_at) {
-		this.changed_at = changed_at;
+	public void setChanged_at() {
+		this.changed_at = LocalDateTime.now();
 	}
 
 	public String getRemarks() {
