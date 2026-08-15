@@ -23,9 +23,17 @@ import my.custom.learning.weblearn.exceptions.ProductNotFoundException;
 import my.custom.learning.weblearn.exceptions.UserNotDeletedException;
 import my.custom.learning.weblearn.exceptions.UserNotFoundException;
 import my.custom.learning.weblearn.exceptions.WarehouseNotFoundException;
+import com.stripe.exception.StripeException;
 
 @ControllerAdvice
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
+	@ExceptionHandler(StripeException.class)
+	public final @Nullable ResponseEntity<Object> handleStripeException(StripeException ex, WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getUserMessage(), request.getDescription(false));
+
+		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_GATEWAY);
+	}
 
 	@ExceptionHandler(Exception.class)
 	public final @Nullable ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {

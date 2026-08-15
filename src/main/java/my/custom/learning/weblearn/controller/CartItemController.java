@@ -45,6 +45,11 @@ public class CartItemController {
 		return repository.findByCartProductId(cart_id, product_id);
 	}
 	
+	@GetMapping(path = "/cart_item/products/{cart_id}", version = AppConstants.API_VERSION)
+	public Optional<List<CartItem>> findByCartCartId(@PathVariable Long cart_id) throws Exception {
+		return repository.findByCartCartId(cart_id);
+	}
+	
 	@PostMapping(path = "/cart_item/add", version = AppConstants.API_VERSION)
 	public ResponseEntity<CartItem> addCartItem(@Validated(CartItem.Create.class) @RequestBody CartItem cartItem) {
 		Optional<CartItemProjectionDto> isProdInCart = repository.findByCartProductId(cartItem.getCart_id(), cartItem.getProduct_id());

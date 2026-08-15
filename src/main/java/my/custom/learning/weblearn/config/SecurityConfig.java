@@ -50,7 +50,7 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable()); // Disable CSRF for testing (enable in production)
 		http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		http.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/register/user", "/loggedin/user", "/login", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+						.requestMatchers("/register/user", "/loggedin/user", "/login", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api-docs/manual").permitAll()
 						.anyRequest().authenticated());
 		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();

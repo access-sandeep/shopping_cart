@@ -23,6 +23,9 @@ public class Role {
 	
 	@Column(name = "role_name", nullable = false, unique = true)
 	private String roleName;
+
+	@Column(name = "description")
+	private String description;
 	
 	public Role() {
 		super();
@@ -34,6 +37,13 @@ public class Role {
 	public Role(@JsonProperty("roleName") String roleName) {
 		super();
 		this.roleName = roleName;
+	}
+
+	// Convenience constructor to create Role with name and description
+	public Role(String roleName, String description) {
+		super();
+		this.roleName = roleName;
+		this.description = description;
 	}
 	
 	public Long getRoleId() {
@@ -50,6 +60,14 @@ public class Role {
 	
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	@Override

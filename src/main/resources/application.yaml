@@ -1,2 +1,15 @@
 server:
   port: 9090
+
+logging:
+  level:
+    org.springdoc: DEBUG
+    io.swagger.v3: DEBUG
+    org.springframework.web.accept: DEBUG
+
+# Disable springdoc auto endpoint because ApiDocsController already serves /v3/api-docs
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
