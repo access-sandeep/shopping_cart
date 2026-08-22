@@ -1,0 +1,8 @@
+# Exclude everything — both Dockerfiles pull source from GitHub.
+# Only init-db.sh is needed by Dockerfile.db (COPY init-db.sh).
+*
+
+!init-db.sh
+!Dockerfile
+!Dockerfile.db
+!.dockerignore

@@ -1,0 +1,14 @@
+# Stage 1: Clone the database backup repository
+FROM alpine/git AS db-backup
+WORKDIR /backup
+RUN git clone --depth=1 https://github.com/access-sandeep/shopping_cart_database.git .
+
+# Stage 2: Custom PostgreSQL image with backup baked in
+FROM postgres:18-alpine
+
+# Copy the pg_dump tar backup from the cloned repo
+COPY --from=db-backup /backup/tar/shopping_cart_db.tar /docker-entrypoint-initdb.d/shopping_cart_db.tar
+
+# Copy the restore init script
+COPY init-db.sh /docker-entrypoint-initdb.d/init-db.sh
+RUN chmod +x /docker-entrypoint-initdb.d/init-db.sh
